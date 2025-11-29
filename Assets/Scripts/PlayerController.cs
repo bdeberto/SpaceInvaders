@@ -9,8 +9,9 @@ public class PlayerController : EntityController
 	InputAction moveAction = default;
 	Rigidbody2D rb = default;
 
-	public override void Setup(GameObject parent)
+	public override void Setup(GameEntity parent)
 	{
+		base.Setup(parent);
 		rb = parent.GetComponent<Rigidbody2D>();
 		moveAction = InputSystem.actions.FindAction("Move");
 	}

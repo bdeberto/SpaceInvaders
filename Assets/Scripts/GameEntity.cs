@@ -1,5 +1,12 @@
 using UnityEngine;
 
+public enum EntityAlignment
+{
+	PROTAGONIST = 0,
+	ANTAGONIST,
+	UNDEFINED,
+}
+
 public class GameEntity : MonoBehaviour
 {
     [SerializeField]
@@ -8,9 +15,9 @@ public class GameEntity : MonoBehaviour
 	public PropertyContainer PropertyContainer = null;
 
 	void Start()
-    {
-		Controller.Setup(gameObject);
-		PropertyContainer.Setup(gameObject);
+    {	
+		Controller.Setup(this);
+		PropertyContainer.Setup(this);
 
 	}
 

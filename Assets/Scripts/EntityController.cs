@@ -1,10 +1,13 @@
-using UnityEngine;
 
 [System.Serializable]
-public abstract class EntityController
+public abstract class EntityController : IHookedComponent
 {
+    protected GameEntity parent;
 
-    public abstract void Setup(GameObject parent);
+    public virtual void Setup(GameEntity parent)
+    {
+        this.parent = parent;
+    }
 
     protected abstract bool IsValid();
 
