@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class PlayerController : EntityController
 {
-	public float Speed = 10f;
+	public float Speed = 2000f;
 
 	InputAction moveAction = default;
 	Rigidbody2D rb = default;
