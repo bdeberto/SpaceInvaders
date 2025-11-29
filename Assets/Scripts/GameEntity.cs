@@ -10,21 +10,24 @@ public enum EntityAlignment
 public class GameEntity : MonoBehaviour
 {
     [SerializeField]
-    protected PlayerController Controller = default;
-    [SerializeField]
+    protected ShipController_ScriptableObject Controller = default;
+	[SerializeField]
+	protected ShipGun Weapon = default;
+	[SerializeField]
 	public PropertyContainer PropertyContainer = null;
 
 	void Start()
     {	
-		Controller.Setup(this);
+		Controller.GetController().Setup(this);
 		PropertyContainer.Setup(this);
-
+		Weapon.Setup(this);
 	}
 
     void Update()
     {
-		Controller.Update();
+		Controller.GetController().Update();
 		PropertyContainer.Update();
+		Weapon.Update();
 		if (PropertyContainer.DeadFlag)
 		{
 			Destroy(gameObject);
@@ -33,8 +36,9 @@ public class GameEntity : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		Controller.Teardown();
+		Controller.GetController().Teardown();
 		PropertyContainer.Teardown();
+		Weapon.Teardown();
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
