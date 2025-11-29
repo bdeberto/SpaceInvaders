@@ -182,10 +182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10040b1cb7b68244c9ca0c145b6923e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameEntity
-  Controller:
-    Speed: 2000
+  Controller: {fileID: 11400000, guid: 7fd84baf0f0a88441b20d68d58c319d9, type: 2}
   Weapon:
     SpawnablePrefab: {fileID: 0}
+    SpawnOffset: {x: 0, y: 0, z: 0}
+    SpawnOrientation: {x: 0, y: 0, z: 0}
+    ProjectileSpeed: 25000
   PropertyContainer:
     HitPoints: 10
     HitValue: 10

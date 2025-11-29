@@ -1,6 +1,8 @@
 
+using System;
+
 [System.Serializable]
-public abstract class EntityController : IHookedComponent
+public abstract class EntityController : IHookedComponent, ICloneable
 {
     protected GameEntity parent;
 
@@ -14,4 +16,6 @@ public abstract class EntityController : IHookedComponent
     public abstract void Update();
 
     public abstract void Teardown();
+
+    public abstract object Clone();
 }

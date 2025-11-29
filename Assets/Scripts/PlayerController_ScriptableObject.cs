@@ -5,8 +5,8 @@ public class PlayerController_ScriptableObject : ShipController_ScriptableObject
 {
     public PlayerController Target = default;
 
-	public override EntityController GetController()
+	public override EntityController GetControllerCopy()
 	{
-		return Target;
+		return (EntityController)Target.Clone();
 	}
 }

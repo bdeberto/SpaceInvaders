@@ -4,15 +4,24 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class PlayerController : EntityController
 {
-	public float Speed = 2000f;
+	[SerializeField]
+	protected float Speed = 2000f;
 
-	InputAction moveAction = default;
-	Rigidbody2D rb = default;
+	protected InputAction moveAction = default;
+	protected Rigidbody2D rb = default;
+
+	public override object Clone()
+	{
+		PlayerController obj = new PlayerController();
+		obj.Speed = Speed;
+		return obj;
+	}
 
 	public override void Setup(GameEntity parent)
 	{
 		base.Setup(parent);
 		rb = parent.GetComponent<Rigidbody2D>();
+		rb.bodyType = RigidbodyType2D.Dynamic;
 		moveAction = InputSystem.actions.FindAction("Move");
 	}
 

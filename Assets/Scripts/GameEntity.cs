@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum EntityAlignment
@@ -16,16 +17,19 @@ public class GameEntity : MonoBehaviour
 	[SerializeField]
 	public PropertyContainer PropertyContainer = null;
 
+	protected EntityController entityController = default;
+
 	void Start()
-    {	
-		Controller.GetController().Setup(this);
+    {
+		entityController = Controller.GetControllerCopy();
+		entityController.Setup(this);
 		PropertyContainer.Setup(this);
 		Weapon.Setup(this);
 	}
 
     void Update()
     {
-		Controller.GetController().Update();
+		entityController.Update();
 		PropertyContainer.Update();
 		Weapon.Update();
 		if (PropertyContainer.DeadFlag)
@@ -36,7 +40,7 @@ public class GameEntity : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		Controller.GetController().Teardown();
+		entityController.Teardown();
 		PropertyContainer.Teardown();
 		Weapon.Teardown();
 	}
