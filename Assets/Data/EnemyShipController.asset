@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyShipController
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController_ScriptableObject
   Target:
-    OscillateSpeed: 2
+    OscillateSpeed: 1.25
