@@ -1,6 +1,7 @@
+using System;
 
-[System.Serializable]
-public class PropertyContainer : IHookedComponent
+[Serializable]
+public class PropertyContainer : IHookedComponent, ICloneable
 {
 	public int HitPoints = 10;
 	public int HitValue = 10;
@@ -46,5 +47,14 @@ public class PropertyContainer : IHookedComponent
 		{
 			target = other;
 		}
+	}
+
+	public object Clone()
+	{
+		PropertyContainer obj = new PropertyContainer();
+		obj.HitPoints = HitPoints;
+		obj.HitValue = HitValue;
+		obj.DeadFlag = DeadFlag;
+		return obj;
 	}
 }

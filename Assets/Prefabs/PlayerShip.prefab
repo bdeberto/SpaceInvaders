@@ -184,8 +184,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameEntity
   Controller: {fileID: 11400000, guid: 6988d6bee84672b45aaf4846975197f9, type: 2}
   Weapon: {fileID: 11400000, guid: 1517eff82f48e504a8510244e0f85c0c, type: 2}
-  PropertyContainer:
-    HitPoints: 10
-    HitValue: 100
-    DeadFlag: 0
+  PropertyContainer: {fileID: 11400000, guid: e36becb1406af174e84c172016d81213, type: 2}
   Alignment: 0

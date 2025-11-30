@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public enum EntityAlignment
 {
@@ -15,18 +14,20 @@ public class GameEntity : MonoBehaviour
 	[SerializeField]
 	protected EntitySpawner_ScriptableObject Weapon = default;
 	[SerializeField]
-	public PropertyContainer PropertyContainer = default;
+	public PropertyContainer_ScriptableObject PropertyContainer = default;
 	[SerializeField]
 	public EntityAlignment Alignment = EntityAlignment.UNDEFINED;
 
 	protected EntityController entityController = default;
 	protected EntitySpawner entityWeapon = default;
+	protected PropertyContainer properties = default;
 
 	void Start()
     {
 		entityController = Controller.GetControllerCopy();
 		entityController.Setup(this);
-		PropertyContainer.Setup(this);
+		properties = PropertyContainer.GetContainerCopy();
+		properties.Setup(this);
 		if (Weapon != null)
 		{
 			entityWeapon = Weapon.GetSpawnerCopy();
@@ -49,9 +50,9 @@ public class GameEntity : MonoBehaviour
     void Update()
     {
 		entityController.Update();
-		PropertyContainer.Update();
+		properties.Update();
 		entityWeapon?.Update();
-		if (PropertyContainer.DeadFlag)
+		if (properties.DeadFlag)
 		{
 			Destroy(gameObject);
 		}
@@ -60,7 +61,7 @@ public class GameEntity : MonoBehaviour
 	private void OnDestroy()
 	{
 		entityController.Teardown();
-		PropertyContainer.Teardown();
+		properties.Teardown();
 		entityWeapon?.Teardown();
 	}
 
@@ -69,7 +70,7 @@ public class GameEntity : MonoBehaviour
 		GameEntity other = collision.gameObject.GetComponent<GameEntity>();
 		if (other != null)
 		{
-			PropertyContainer.ApplyInfluence(other.PropertyContainer);
+			properties.ApplyInfluence(other.properties);
 		}
 	}
 }
