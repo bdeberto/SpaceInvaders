@@ -10,5 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc1a510db86dd474b950fee7adb415b5, type: 3}
-  m_Name: ProjectileController
+  m_Name: PlayerProjectileController
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileController_ScriptableObject
+  Target:
+    Speed: 10

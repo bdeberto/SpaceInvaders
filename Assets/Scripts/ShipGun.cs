@@ -1,24 +1,29 @@
 using UnityEngine;
 
 [System.Serializable]
-public class ShipGun : EntitySpawner
+public abstract class ShipGun : EntitySpawner
 {
-
-	public override void Setup(GameEntity parent)
-	{
-		base.Setup(parent);
-
-	}
-
-	public override void Teardown()
-	{
-		
-	}
+	[SerializeField]
+	protected float ShotDelay = .33f;
+	
+	protected float shotTimer = 0f;
 
 	public override void Update()
 	{
-		
+		if (IsValid() && shotTimer <= 0f)
+		{
+			FireWeapon();
+		}
+		if (shotTimer > 0f)
+		{
+			shotTimer -= Time.deltaTime;
+		}
+		base.Update();
 	}
 
-
+	protected virtual void FireWeapon()
+	{
+		SpawnEntity();
+		shotTimer = ShotDelay;
+	}
 }

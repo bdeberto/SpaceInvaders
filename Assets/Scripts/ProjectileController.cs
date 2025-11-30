@@ -33,7 +33,7 @@ public class ProjectileController : EntityController
 	public override void Update()
 	{
 		Vector3 p = parent.transform.position;
-		p.y += Time.deltaTime * Speed;
+		p += parent.transform.up * Time.deltaTime * Speed;
 		parent.transform.position = p;
 		if (Vector3.Distance(Vector3.zero, p) > 10f)
 		{

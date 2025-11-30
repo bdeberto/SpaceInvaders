@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7173519144134253189}
   - component: {fileID: 5584971222419157820}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,13 +169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameEntity
   Controller: {fileID: 11400000, guid: f75dbb1e7ca151c40b6d72452fe2d7f6, type: 2}
-  Weapon:
-    SpawnablePrefab: {fileID: 0}
-    SpawnOffset: {x: 0, y: 0, z: 0}
-    SpawnOrientation: {x: 0, y: 0, z: 0}
-    ProjectileSpeed: 25000
+  Weapon: {fileID: 0}
   PropertyContainer:
     HitPoints: 10
     HitValue: 10
     DeadFlag: 0
-    Alignment: 0
+  Alignment: 0

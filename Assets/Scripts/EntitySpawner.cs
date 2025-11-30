@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public abstract class EntitySpawner : IHookedComponent
+[Serializable]
+public abstract class EntitySpawner : IHookedComponent, ICloneable
 {
 	[SerializeField]
 	protected GameEntity SpawnablePrefab = default;
@@ -33,14 +34,15 @@ public abstract class EntitySpawner : IHookedComponent
 	{
 		if (SpawnablePrefab != null)
 		{
-			GameEntity e = Object.Instantiate(SpawnablePrefab);
+			GameEntity e = UnityEngine.Object.Instantiate(SpawnablePrefab);
 			e.transform.position = parent.transform.position + SpawnOffset;
-			e.transform.eulerAngles = e.transform.eulerAngles + SpawnOrientation;
+			e.transform.eulerAngles = parent.transform.eulerAngles + SpawnOrientation;
+			e.Alignment = parent.Alignment;
 			spawnedEntities.Add(e);
 		}
 	}
 
-	protected void PruneSpawnList()
+	protected virtual void PruneSpawnList()
 	{
 		spawnedEntities.RemoveAll(x => x == null);
 	}
@@ -49,4 +51,6 @@ public abstract class EntitySpawner : IHookedComponent
 	{
 		return SpawnablePrefab != null;
 	}
+
+	public abstract object Clone();
 }

@@ -183,13 +183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameEntity
   Controller: {fileID: 11400000, guid: 7fd84baf0f0a88441b20d68d58c319d9, type: 2}
-  Weapon:
-    SpawnablePrefab: {fileID: 0}
-    SpawnOffset: {x: 0, y: 0, z: 0}
-    SpawnOrientation: {x: 0, y: 0, z: 0}
-    ProjectileSpeed: 25000
+  Weapon: {fileID: 11400000, guid: d6b717a369ac96645ae6e256d25604f9, type: 2}
   PropertyContainer:
     HitPoints: 10
     HitValue: 10
     DeadFlag: 0
-    Alignment: 1
+  Alignment: 1

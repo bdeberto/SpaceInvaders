@@ -5,6 +5,8 @@ public class EnemyController : EntityController
 {
 	[SerializeField]
 	protected float OscillateSpeed = 2f;
+	[SerializeField]
+	protected float OscillateAmplitude = 2f;
 
 	protected Rigidbody2D rb = default;
 	protected Vector3 startPosition = default;
@@ -13,6 +15,7 @@ public class EnemyController : EntityController
 	{
 		EnemyController obj = new EnemyController();
 		obj.OscillateSpeed = OscillateSpeed;
+		obj.OscillateAmplitude = OscillateAmplitude;
 		return obj;
 	}
 
@@ -35,7 +38,7 @@ public class EnemyController : EntityController
 	public override void Update()
 	{
 		Vector3 p = parent.transform.position;
-		p.x = startPosition.x + Mathf.Sin(Time.time * OscillateSpeed);
+		p.x = startPosition.x + (Mathf.Sin(Time.time * OscillateSpeed) * OscillateAmplitude);
 		parent.transform.position = p;
 	}
 
