@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerShipController
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController_ScriptableObject
   Target:
-    Speed: 2000
+    Speed: 3500
