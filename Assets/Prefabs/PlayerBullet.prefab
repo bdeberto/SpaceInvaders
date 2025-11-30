@@ -171,7 +171,7 @@ MonoBehaviour:
   Controller: {fileID: 11400000, guid: f75dbb1e7ca151c40b6d72452fe2d7f6, type: 2}
   Weapon: {fileID: 0}
   PropertyContainer:
-    HitPoints: 10
+    HitPoints: 100
     HitValue: 10
     DeadFlag: 0
   Alignment: 0

@@ -186,6 +186,6 @@ MonoBehaviour:
   Weapon: {fileID: 11400000, guid: d6b717a369ac96645ae6e256d25604f9, type: 2}
   PropertyContainer:
     HitPoints: 10
-    HitValue: 10
+    HitValue: 100
     DeadFlag: 0
   Alignment: 1
