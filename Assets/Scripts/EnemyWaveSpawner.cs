@@ -15,6 +15,8 @@ public class EnemyWaveSpawner : EntitySpawner
     [SerializeField]
     protected float WaveRespawnDelay = 1.5f;
 
+    protected bool readyToSpawn = true;
+
     public override void Setup(GameEntity parent)
     {
         base.Setup(parent);
@@ -24,8 +26,9 @@ public class EnemyWaveSpawner : EntitySpawner
     public override void Update()
     {
         base.Update();
-        if (CheckWaveClear())
+        if (readyToSpawn && CheckWaveClear())
         {
+            readyToSpawn = false;
             parent.StartCoroutine(SpawnWave());
         }
     }
@@ -50,19 +53,20 @@ public class EnemyWaveSpawner : EntitySpawner
             SpawnOffset.y += RowOffset;
         }
         SpawnOffset = origin;
+        readyToSpawn = true;
     }
 
 	public override object Clone()
 	{
-        EnemyWaveSpawner waveSpawner = new EnemyWaveSpawner();
-        waveSpawner.SpawnablePrefab = SpawnablePrefab;
-        waveSpawner.SpawnOffset = SpawnOffset;
-        waveSpawner.SpawnOrientation = SpawnOrientation;
-        waveSpawner.NumCols = NumCols;
-        waveSpawner.NumRows = NumRows;
-        waveSpawner.ColOffset = ColOffset;
-        waveSpawner.RowOffset = RowOffset;
-        waveSpawner.WaveRespawnDelay = WaveRespawnDelay;
-        return waveSpawner;
+        EnemyWaveSpawner obj = new EnemyWaveSpawner();
+		obj.SpawnablePrefab = SpawnablePrefab;
+		obj.SpawnOffset = SpawnOffset;
+		obj.SpawnOrientation = SpawnOrientation;
+		obj.NumCols = NumCols;
+		obj.NumRows = NumRows;
+		obj.ColOffset = ColOffset;
+		obj.RowOffset = RowOffset;
+		obj.WaveRespawnDelay = WaveRespawnDelay;
+        return obj;
 	}
 }
