@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e334041519ad7b74eb61bf53d24aae45, type: 3}
+  m_Name: EnemyWaveSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWaveSpawner_ScriptableObject
+  Target:
+    SpawnablePrefab: {fileID: 6043937138504939195, guid: 298a1bcf514c3064096d329c1f863f8e, type: 3}
+    SpawnOffset: {x: 0, y: 0, z: 0}
+    SpawnOrientation: {x: 0, y: 0, z: 0}
+    NumRows: 2
+    NumCols: 3
+    RowOffset: -1
+    ColOffset: 2

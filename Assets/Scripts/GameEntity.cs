@@ -24,15 +24,22 @@ public class GameEntity : MonoBehaviour
 
 	void Start()
     {
-		entityController = Controller.GetControllerCopy();
-		entityController.Setup(this);
-		properties = PropertyContainer.GetContainerCopy();
-		properties.Setup(this);
+		if (Controller != null)
+		{
+			entityController = Controller.GetControllerCopy();
+			entityController.Setup(this);
+		}
+		if (PropertyContainer != null)
+		{
+			properties = PropertyContainer.GetContainerCopy();
+			properties.Setup(this);
+		}
 		if (Weapon != null)
 		{
 			entityWeapon = Weapon.GetSpawnerCopy();
+			entityWeapon.Setup(this);
 		}
-		entityWeapon?.Setup(this);
+		
 		switch (Alignment)
 		{
 			case EntityAlignment.PROTAGONIST:
@@ -49,10 +56,10 @@ public class GameEntity : MonoBehaviour
 
     void Update()
     {
-		entityController.Update();
-		properties.Update();
+		entityController?.Update();
+		properties?.Update();
 		entityWeapon?.Update();
-		if (properties.DeadFlag)
+		if (properties != null && properties.DeadFlag)
 		{
 			Destroy(gameObject);
 		}
@@ -60,15 +67,15 @@ public class GameEntity : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		entityController.Teardown();
-		properties.Teardown();
+		entityController?.Teardown();
+		properties?.Teardown();
 		entityWeapon?.Teardown();
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		GameEntity other = collision.gameObject.GetComponent<GameEntity>();
-		if (other != null)
+		if (other != null && properties != null)
 		{
 			properties.ApplyInfluence(other.properties);
 		}
