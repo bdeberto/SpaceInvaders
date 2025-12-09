@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,6 +12,8 @@ public class EnemyWaveSpawner : EntitySpawner
 	protected float RowOffset = -1f;
 	[SerializeField]
 	protected float ColOffset = 2f;
+    [SerializeField]
+    protected float WaveRespawnDelay = 1.5f;
 
     public override void Setup(GameEntity parent)
     {
@@ -23,7 +26,7 @@ public class EnemyWaveSpawner : EntitySpawner
         base.Update();
         if (CheckWaveClear())
         {
-            SpawnWave();
+            parent.StartCoroutine(SpawnWave());
         }
     }
 
@@ -32,8 +35,9 @@ public class EnemyWaveSpawner : EntitySpawner
         return spawnedEntities.Count == 0;
     }
 
-    void SpawnWave()
+    IEnumerator SpawnWave()
     {
+        yield return new WaitForSeconds(WaveRespawnDelay);
         Vector3 origin = SpawnOffset;
         for (int i = 0; i < NumRows; ++i)
         {
@@ -58,6 +62,7 @@ public class EnemyWaveSpawner : EntitySpawner
         waveSpawner.NumRows = NumRows;
         waveSpawner.ColOffset = ColOffset;
         waveSpawner.RowOffset = RowOffset;
+        waveSpawner.WaveRespawnDelay = WaveRespawnDelay;
         return waveSpawner;
 	}
 }
